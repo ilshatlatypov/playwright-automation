@@ -43,6 +43,11 @@ jobs:
           allure_results: allure-results
           allure_history: allure-history
           keep_reports: 20
+          
+      - name: Debug files
+        run: |
+          echo "Listing workspace:"
+          ls -R
 
       - name: Deploy report to Github Pages
         if: always()
