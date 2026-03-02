@@ -49,11 +49,25 @@ jobs:
           echo "Listing workspace:"
           ls -R
 
+      - name: Check allure-history contents
+        run: |
+          echo "Allure history content:"
+          ls -la allure-history
+          echo "Recursive:"
+          find allure-history -type f | head -20
+          
+      - name: Ensure allure-history is not empty
+        run: |
+          mkdir -p allure-history
+          if [ -z "$(find allure-history -type f -print -quit)" ]; then
+            echo "No report generated yet" > allure-history/index.html
+          fi
+
       - name: Deploy report to Github Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-history
+          publish_dir: ./allure-history
           publish_branch: gh-pages
           force_orphan: true
