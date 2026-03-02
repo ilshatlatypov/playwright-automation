@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1426","shouldVerifyInitialPageTitle()","","Mon Mar 02 22:02:28 UTC 2026","passed","Mon Mar 02 22:02:30 UTC 2026","","org.example.InitialTest","org.example.InitialTest","shouldVerifyInitialPageTitle"
