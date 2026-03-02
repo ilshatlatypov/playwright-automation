@@ -1,6 +1,7 @@
 package org.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
@@ -52,5 +53,17 @@ public class InitialTest {
         page.navigate("https://demoqa.com");
         String title = page.title();
         assertEquals("demosite", title, "The page title has unexpected value");
+    }
+
+    @Test
+    void shouldNavigateToElementsPage() {
+        page.navigate("https://demoqa.com");
+
+        // Click on the first category card (Elements)
+        page.locator(".card-body:has-text('Elements')").click();
+
+        // Verify navigation by checking the URL
+        String currentUrl = page.url();
+        assertTrue(currentUrl.contains("elements"), "The URL should contain 'elements' after clicking the card");
     }
 }
